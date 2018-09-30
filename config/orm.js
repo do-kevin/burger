@@ -1,5 +1,11 @@
 const connection = require("../config/connection.js");
 
+/* * * * * * * * * * * * * * * * * * * * * 
+├── config
+   ├── connection.js ╗
+   └── orm.js <══════╝
+* * * * * * * * * * * * * * * * * * * * */
+
 function questionForEachColVal(num) {
     var arr = [];
     for(let i = 0; i < num; i++) {
@@ -14,6 +20,7 @@ function objToSql(ob) {
     for (var key in ob) {
         var value = ob[key];
 
+        // Object.hasOwnProperty.call() checks if an object's property belongs to specified object
         if(Object.hasOwnProperty.call(ob, key)) {
             if(typeof value === `string` && value.indexOf(" ") >= 0) {
                 value = `\'${value}\'`; 
@@ -39,7 +46,17 @@ var orm = {
             if (err) throw err;
             callback(result);
         });
+    },
+    updateOne: function(table, objColVals, condition, callback) {
+        var query = `UPDATE ${table} SET ${objToSql(objColVals)} WHERE ${condition};`;
+        console.log(query);
+        connection.query(query, function(err, result) {
+            if (err) throw err;
+            callback(result);
+        });
     }
 };
+
+module.exports = orm;
 
 
