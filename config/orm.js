@@ -8,7 +8,7 @@ const connection = require("../config/connection.js");
 
 function questionForEachColVal(num) {
     var arr = [];
-    for(let i = 0; i < num; i++) {
+    for(var i = 0; i < num; i++) {
         arr.push(`?`);
     }
     return arr.toString();
