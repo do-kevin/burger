@@ -24,7 +24,10 @@ function objToSql(ob) {
         if(Object.hasOwnProperty.call(ob, key)) {
             if(typeof value === `string` && value.indexOf(" ") >= 0) {
                 value = `\'${value}\'`; 
+                console.log(value);
+                console.log(typeof value);
             }
+            console.log(`${key}=${value}`);
             arr.push(`${key}=${value}`);
         }
     }
@@ -34,6 +37,7 @@ function objToSql(ob) {
 var orm = {
     selectAll: function(table, callback) {
         var query = `SELECT * FROM ${table};`;
+        console.log(`selectAll() query: ${query}`);
         connection.query(query, function(err, result) {
             if (err) throw err;
             callback(result);
@@ -41,7 +45,7 @@ var orm = {
     },
     insertOne: function(table, col, vals, callback) {
         var query = `INSERT INTO ${table} (${col.toString()}) VALUES (${questionForEachColVal(vals.length)});`;
-        console.log(query);
+        console.log(`insertOne() query: ${query}`);
         connection.query(query, function(err, result) {
             if (err) throw err;
             callback(result);
@@ -49,7 +53,7 @@ var orm = {
     },
     updateOne: function(table, objColVals, condition, callback) {
         var query = `UPDATE ${table} SET ${objToSql(objColVals)} WHERE ${condition};`;
-        console.log(query);
+        console.log(`updateOne() query: ${query}`);
         connection.query(query, function(err, result) {
             if (err) throw err;
             callback(result);
