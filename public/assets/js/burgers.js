@@ -1,5 +1,5 @@
 $(function() {
-    $(`.change-devour`).on(`click`, function(e) {
+    $(`.change-devour`).on(`click`, function() {
         var id = $(this).data(`id`);
         var newDevour = $(this).data(`newDevour`);
 
@@ -25,7 +25,7 @@ $(`.create-form`).on(`submit`, function(e) {
         burger_name: $(`#bn`).val().trim(),
         devoured: $(`[name=isItDevoured]:checked`).val().trim()
     };
-    console.log(`Submit hit: ${newBurger.burger_name}, ${newBurger.devoured}`)
+    console.log(`\nSubmit hit: ${newBurger.burger_name}, ${newBurger.devoured}\n`)
 
     $.ajax(`/api/burgers`, {
         type: `POST`,
