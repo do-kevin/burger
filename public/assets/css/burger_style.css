@@ -1,0 +1,19 @@
+.image {
+    position: relative;
+}
+
+#devouredBurgers {
+    text-align: right;
+    position: absolute;
+    top: 0; 
+    right: 200px; 
+    width: 100%; 
+}
+
+#theStomach {
+    opacity: 0.5;
+}
+
+h1 {
+    text-align: center;
+}

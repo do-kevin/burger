@@ -37,3 +37,6 @@ $(`.create-form`).on(`submit`, function(e) {
         }
     );
 });
+// setTimeout(function() {
+//     $(`.timer`).hide(`explode`, 10000).empty();
+// }, 1000);

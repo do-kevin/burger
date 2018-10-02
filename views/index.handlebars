@@ -1,51 +1,79 @@
-<h1>Eat-Da-Burger!</h1>
-
-
-
-<section class="hero is-small is-warning">
+<section class="hero is-warning">
     <div class="hero-body">
-    <h2 class="subtitle">Burgers not eaten</h2>
-    <ul>
-        {{#each burger}}
-            <ul>
-            {{#unless devoured}}
-                {{> burgers/burger-block devoured=false}}
-            {{/unless}}
-            </ul>
-        {{/each}}
-    </ul>
+        <h1 class="title">Eat-Da-Burger!</h1>
     </div>
 </section>
 
-<section class="hero is-small is-danger">
-    <div class="hero-body">
-    <h2 class="subtitle">Burgers devoured</h2>
-    <ul>
-        {{#each burger}}
-        <ul>
-        {{#if devoured}}
-        
-            {{burger_name}}
-            
-        {{/if}}
-        </ul>
-        {{/each}}
-    </ul>
+<div class="tile is-ancestor">
+    <div class="tile is-vertical is-8">
+        <div class="tile">
+            <div class="tile is-parent">
+                <article class="tile is-child notification is-info">
+                    <div class="content">
+                        <form class="create-form">
+                            <div class="form-group">
+                                <label for="bn">Burger Name</label>
+                                <br>
+                                <input type="text" id="bn" name="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="devoured"></label>
+                                <input type="radio" name="isItDevoured" value="0" checked>
+                                <button type="submit">Serve</button>
+                            </div>
+                        </form>
+                        <figure class="image">
+                            <img src="/assets/img/plate.png">
+                        </figure>
+                    </div>
+                </article>
+            </div>
+            <div class="tile is-parent">
+                <article class="tile is-child notification is-dark">
+                    <figure class="image is-1by2">
+                        <img src="/assets/img/mouth.png">
+                    </figure>
+                </article>
+            </div>
+        </div>
+        <div class="tile is-parent">
+            <article class="tile is-child notification is-danger">
+                <div class="content" id="devouredBurgers">
+
+                    {{#each burger}}
+
+                    {{#if devoured}}
+                    <div class="timer">
+                    <h2 class="subtitle">{{burger_name}}</h1><br>
+                    </div>
+                    {{/if}}
+
+                    {{/each}}
+
+                </div>
+                <figure class="image">
+                    <img id="theStomach" src="/assets/img/stomach.png">
+                </figure>
+            </article>
+        </div>
     </div>
-</section>
-
-
-
-<form class="create-form">
-    <div class="form-group">
-        <label for="bn">Burger Name</label>
-        <input type="text" id="bn" name="name">
+    <div class="tile is-parent">
+        <article class="tile is-child notification is-success">
+            <div class="content">
+                <h2 class="subtitle">Burgers not eaten</h2>
+                <ul>
+                    {{#each burger}}
+                    <ul>
+                        {{#unless devoured}}
+                        {{> burgers/burger-block devoured=false}}
+                        <figure class="image">
+                            <img src="/assets/img/cartoonburger.png">
+                        </figure>
+                        {{/unless}}
+                    </ul>
+                    {{/each}}
+            </div>
     </div>
-
-    <div class="form-group">
-        <label for="devoured"></label><br>
-        <input type="radio" name="isItDevoured" value="0" checked> Not devoured yet<br>
-    </div>
-
-    <button type="submit">Submit Burger</button>
-</form>
+    </article>
+</div>
+</div>
