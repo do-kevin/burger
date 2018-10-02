@@ -22,9 +22,10 @@ $(`.create-form`).on(`submit`, function(e) {
     e.preventDefault();
 
     var newBurger = {
-        name: $(`#bn`).val().trim(),
-        devoured: $(`[name=devoured]:checked`).val().trim()
+        burger_name: $(`#bn`).val().trim(),
+        devoured: $(`[name=isItDevoured]:checked`).val().trim()
     };
+    console.log(`Submit hit: ${newBurger.burger_name}, ${newBurger.devoured}`)
 
     $.ajax(`/api/burgers`, {
         type: `POST`,

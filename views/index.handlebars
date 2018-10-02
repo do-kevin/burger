@@ -6,10 +6,10 @@
     <div class="hero-body">
     <h2 class="subtitle">Burgers not eaten</h2>
     <ul>
-        {{#each burgers}}
-        {{#unless devoured}}
-        {{> burgers/burger-block devoured=false}}
-        {{/unless}}
+        {{#each burger}}
+            {{#unless devoured}}
+                {{> burgers/burger-block devoured=false}}
+            {{/unless}}
         {{/each}}
     </ul>
     </div>
@@ -19,9 +19,10 @@
     <div class="hero-body">
     <h2 class="subtitle">Burgers devoured</h2>
     <ul>
-        {{#each burgers}}
+        {{#each burger}}
         {{#if devoured}}
-        {{> burgers/burger-block devoured=true}}
+            {{burger_name}}
+            {{!-- {{> burgers/burger-block devoured=true}} --}}
         {{/if}}
         {{/each}}
     </ul>
@@ -38,7 +39,7 @@
 
     <div class="form-group">
         <label for="devoured"></label><br>
-        <input type="radio" name="devoured" value="0" checked><br>
+        <input type="radio" name="isItDevoured" value="0" checked> Not devoured yet<br>
     </div>
 
     <button type="submit">Submit Burger</button>

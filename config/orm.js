@@ -6,13 +6,14 @@ const connection = require("../config/connection.js");
    └── orm.js <══════╝
 * * * * * * * * * * * * * * * * * * * * */
 
-function questionForEachColVal(num) {
-    var arr = [];
-    for(var i = 0; i < num; i++) {
-        arr.push(`?`);
-    }
-    return arr.toString();
-}
+// function questionForEachColVal(num) {
+//     var arr = [];
+//     for(var i = 0; i < num; i++) {
+//         arr.push(`?`);
+//     }
+//     console.log(`Arr: ${arr}`)
+//     return arr.toString();
+// }
 
 function objToSql(ob) {
     var arr = [];
@@ -43,8 +44,11 @@ var orm = {
             callback(result);
         });
     },
-    insertOne: function(table, col, vals, callback) {
-        var query = `INSERT INTO ${table} (${col.toString()}) VALUES (${questionForEachColVal(vals.length)});`;
+    insertOne: function(table, burgerObj, callback) {
+        // burgerObj.devoured = false;
+        console.log(burgerObj);
+        // var query = `INSERT INTO burgers SET burger_name='burgerburger', devoured= false`;
+        var query = `INSERT INTO burgers SET burger_name='${burgerObj.burger_name}', devoured=${burgerObj.devoured}`;
         console.log(`insertOne() query: ${query}`);
         connection.query(query, function(err, result) {
             if (err) throw err;
