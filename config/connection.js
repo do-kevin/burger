@@ -1,6 +1,6 @@
 const mysql = require(`mysql`);
 
-console.log(`\n\nConsole-logging "process.env.JAWSDB_URL":\n${process.env.JAWSDB_URL}\n`);
+console.log(`\n\nConsole-logging "process.env.JAWSDB_URL":\n\n${process.env.JAWSDB_URL}\n`);
 if(process.env.JAWSDB_URL) {
     var connection = mysql.createConnection(process.env.JAWSDB_URL);
 } else {
@@ -17,7 +17,7 @@ connection.connect((err) => {
     if (err) {
         console.error(`Error connecting ${err.stack}`);
         return;
-    }
+    };
     console.log(`Connected as id ${connection.threadId}`);
 });
 
