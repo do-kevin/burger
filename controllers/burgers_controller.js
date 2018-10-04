@@ -37,11 +37,13 @@ router.put(`/api/burgers/:id`, function (req, res) {
         // objColVals
         devoured: req.body.devoured
     }, condition, function (result) {
-        if (result.changedRows === 0) {
-            return res.status(400).end();
-        } else {
-            return res.status(200).end();
-        }
+        // if (result.changedRows === 0) {
+        //     return res.status(400).end();
+        // } else {
+        //     return res.status(200).end();
+        // }
+
+        console.log(result);
     });
 });
 
