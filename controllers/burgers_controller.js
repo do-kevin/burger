@@ -40,7 +40,7 @@ router.put(`/api/burgers/:id`, function (req, res) {
         if (result.changedRows === 0) {
             return res.status(400).end();
         } else {
-            res.status(200).end();
+            return res.status(200).end();
         }
     });
 });
